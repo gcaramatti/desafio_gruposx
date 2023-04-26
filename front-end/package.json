@@ -20,6 +20,7 @@
     "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
+    "react-select": "^5.7.2",
     "react-toastify": "^9.1.2",
     "scheduler": "^0.23.0",
     "styled-components": "^5.3.10",

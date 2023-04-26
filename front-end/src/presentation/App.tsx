@@ -7,6 +7,7 @@ import { defaultTheme } from '../shared/styles/themes/default.theme';
 import { Provider } from 'react-redux';
 import store from '../data/store/store';
 import { ToastComponent } from './components';
+import { LoadInitialData } from './components/LoadInitialData/LoadInitialData.component';
 
 function App() {
   const queryClient = new QueryClient({
@@ -26,6 +27,7 @@ function App() {
           <ToastComponent />
 
           <BrowserRouter>
+            <LoadInitialData />
             <AppRoutes />
           </BrowserRouter>
         </ThemeProvider>

@@ -13,3 +13,5 @@ export interface IInputProps<T extends FieldValues>
   errorMessage?: string;
   icon?: ReactNode;
 }
+
+export type InputTextStylesType = Pick<IInputProps<FieldValues>, 'icon'>;

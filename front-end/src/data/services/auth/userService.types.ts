@@ -12,6 +12,8 @@ export interface IGetAuthUser {
   company: ICompany;
 }
 
+export type IUserFormType = Omit<IUser, 'id'>;
+
 export interface IUser {
   id: number;
   cpf: string;

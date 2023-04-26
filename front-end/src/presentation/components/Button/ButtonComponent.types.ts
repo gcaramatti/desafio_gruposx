@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { DefaultColorsType } from '../../../shared/global/global.types';
+import { DefaultColorsType } from '../../../shared/global/interfaces/global.types';
 
 export interface IButtonProps {
   icon?: ReactNode;

@@ -1,13 +1,23 @@
-import { Button, CardDetails, Modal } from '../../components';
+import { Link } from 'react-router-dom';
+import { Button, CardDetails, Loader, Modal } from '../../components';
 import { ActionButtons, Container, Content } from './HomePage.styles';
 import { useHomePage } from './useHomePage';
-import { RiBuildingLine, RiUserAddLine } from 'react-icons/ri';
+import { RiBuildingLine, RiUserAddLine, RiEyeLine } from 'react-icons/ri';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { CreateCompanyForm } from './components/CreateCompanyForm/CreateCompanyForm.component';
 
 export function HomePage(): JSX.Element {
-  const { modalOpen, setModalOpen, allCompanies } = useHomePage();
+  const {
+    modalOpen,
+    setModalOpen,
+    allCompanies,
+    createCompanyForm,
+    isLoading
+  } = useHomePage();
 
   return (
     <Container>
+      <Loader isLoading={isLoading} />
       <ActionButtons>
         <Button
           onClick={() => setModalOpen('createCompany')}
@@ -26,19 +36,47 @@ export function HomePage(): JSX.Element {
 
       <Content>
         {allCompanies ? (
-          <CardDetails>
+          <>
             {allCompanies.map(value => (
-              <div key={value.id}>
+              <CardDetails key={value.id}>
                 <h2>Empresa n°: {value.id}</h2>
-                <p>Razão Social: {value.socialName}</p>
-                <p>CNPJ: {value.cnpj}</p>
-                <p>E-mail: {value.email}</p>
-                <p>Contato: {value.phoneNumber}</p>
 
-                <Button>Detalhes</Button>
-              </div>
+                <p>
+                  <strong>Razão Social:</strong> {value.socialName}
+                </p>
+
+                <p>
+                  <strong>CNPJ:</strong> {value.cnpj}
+                </p>
+
+                <p>
+                  <strong>E-mail:</strong> {value.email}
+                </p>
+
+                <p>
+                  <strong>Contato:</strong> {value.phoneNumber}
+                </p>
+
+                <ActionButtons>
+                  <Link to={`/company/${value.id}`}>
+                    <Button>
+                      <RiEyeLine />
+                    </Button>
+                  </Link>
+
+                  <Button
+                    customButton={{
+                      backgroundColor: 'danger',
+                      color: 'white'
+                    }}
+                    onClick={() => alert('Clicked')}
+                  >
+                    <RiDeleteBin6Line />
+                  </Button>
+                </ActionButtons>
+              </CardDetails>
             ))}
-          </CardDetails>
+          </>
         ) : (
           <p>Nada encontrado</p>
         )}
@@ -47,13 +85,16 @@ export function HomePage(): JSX.Element {
       <Modal
         isOpen={modalOpen === 'createCompany'}
         onClose={() => setModalOpen('closed')}
+        title='Cadastrar empresa'
+        onSubmit={createCompanyForm.createCompanyFormSubmit()}
       >
-        Oi porra
+        <CreateCompanyForm createCompanyForm={createCompanyForm} />
       </Modal>
 
       <Modal
         isOpen={modalOpen === 'createUser'}
         onClose={() => setModalOpen('closed')}
+        title='Cadastrar funcionário'
       >
         Olá cachorro
       </Modal>

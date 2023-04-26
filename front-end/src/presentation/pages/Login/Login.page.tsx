@@ -2,19 +2,18 @@ import { Button, InputText } from '../../components';
 import { Card, Container, Form, Secondary } from './LoginPage.styles';
 import { useLogin } from './useLogin';
 import logo from '../../../shared/assets/logo_sx.png';
-import { FieldValues } from 'react-hook-form';
 import { Loader } from '../../components';
 import { RiMailLine, RiLockPasswordLine } from 'react-icons/ri';
 
 export function LoginPage(): JSX.Element {
-  const { control, handleSubmit, onSubmit, isLoading, errors } = useLogin();
+  const { control, onSubmit, isLoading, errors } = useLogin();
 
   return (
     <Container>
       <Loader isLoading={isLoading} />
 
       <Card>
-        <Form onSubmit={handleSubmit((data: FieldValues) => onSubmit(data))}>
+        <Form onSubmit={onSubmit()}>
           <h1>Login</h1>
 
           <InputText

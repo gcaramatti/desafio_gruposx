@@ -5,4 +5,5 @@ export interface IModalProps {
   onClose: () => void;
   children: ReactNode;
   onSubmit?: () => void;
+  title: string;
 }

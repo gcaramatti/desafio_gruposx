@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import { InputTextStylesType } from './InputTextComponent.types';
 
-export const Container = styled.div`
+export const Container = styled.div<InputTextStylesType>`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: ${({ icon }) => (icon ? 'center' : 'flex-start')};
+  flex-direction: ${({ icon }) => (icon ? 'row' : 'column')};
   gap: 1rem;
+
+  > label {
+    margin: 0;
+  }
 
   > span {
     font-size: 1.6rem;

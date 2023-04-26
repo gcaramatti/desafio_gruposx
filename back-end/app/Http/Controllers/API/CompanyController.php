@@ -20,7 +20,7 @@ class CompanyController extends Controller
         if(!is_null($request)){
             Company::create($request->all());
 
-            return Response(['data' => 'Empresa criada com sucesso'], 200);
+            return Response(['data' => null], 200);
         }
 
         return Response(['data' => 'Erro ao criar empresa'], 400);

@@ -11,10 +11,6 @@ export interface IPersistenceAddress {
   siafi: string;
 }
 
-export interface IGetAddressByPostalCodeMappePayload {
-  cep: string;
-}
-
 export interface IAddress {
   postalCode: string;
   street: string;

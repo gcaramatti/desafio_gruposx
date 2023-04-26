@@ -1,19 +1,28 @@
 import ReactModal from 'react-modal';
 import { IModalProps } from './ModalComponent.types';
 import { Button } from '..';
-import { Container, FooterButtons } from './ModalComponent.styles';
+import {
+  Container,
+  FooterButtons,
+  FormContainer,
+  Title
+} from './ModalComponent.styles';
 
 export function Modal({
   isOpen,
   onClose,
   children,
-  onSubmit = undefined
+  onSubmit = undefined,
+  title
 }: IModalProps): JSX.Element {
   return (
     <ReactModal isOpen={isOpen} ariaHideApp={false}>
+      <Title>
+        <h2>{title}</h2>
+      </Title>
       {onSubmit ? (
         <form onSubmit={onSubmit}>
-          <Container>{children}</Container>
+          <FormContainer>{children}</FormContainer>
 
           <FooterButtons>
             <Button type='submit'>Salvar</Button>
@@ -24,6 +33,7 @@ export function Modal({
                 backgroundColor: 'danger',
                 color: 'white'
               }}
+              type='button'
             >
               Fechar
             </Button>

@@ -31,5 +31,6 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::delete('delete-user/{id}', [UserController::class, 'destroy']);
 
     Route::get('companies',[CompanyController::class,'index']);
-
+    Route::post('new-company',[CompanyController::class,'store']);
+    Route::delete('delete-company/{id}',[CompanyController::class,'store']);
 });

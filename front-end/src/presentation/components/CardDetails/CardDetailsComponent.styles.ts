@@ -9,10 +9,4 @@ export const Card = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   max-width: 30rem;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
 `;

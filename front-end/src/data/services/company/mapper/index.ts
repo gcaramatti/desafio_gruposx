@@ -1,2 +1,4 @@
 import GetAllCompaniesMapper from './getAllCompanies.mapper';
-export { GetAllCompaniesMapper };
+import CreateCompanyMapper from './createCompany.mapper';
+
+export { GetAllCompaniesMapper, CreateCompanyMapper };

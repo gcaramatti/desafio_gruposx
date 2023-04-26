@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 1000;
   cursor: wait;
 
   p {

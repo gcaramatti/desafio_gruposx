@@ -15,11 +15,12 @@ export function InputText<T extends FieldValues>({
   type = 'text',
   placeholder = '',
   errorMessage = '',
-  icon
+  icon,
+  onBlur
 }: IInputProps<T>): JSX.Element {
   return (
     <>
-      <Container>
+      <Container icon={icon}>
         {icon && <span>{icon}</span>}
 
         <Controller
@@ -35,12 +36,13 @@ export function InputText<T extends FieldValues>({
                 onChange(Mask.apply(mask, e.target.value));
               }}
               value={value}
+              onBlur={onBlur}
             />
           )}
         />
-      </Container>
 
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      </Container>
     </>
   );
 }

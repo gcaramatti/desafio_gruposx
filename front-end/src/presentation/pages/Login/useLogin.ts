@@ -4,7 +4,7 @@ import { authenticateUserMutation } from '../../../data/queries/user/user.mutati
 import { toast } from 'react-toastify';
 import { IAuthServicePayload } from '../../../data/services/auth/userService.types';
 import { getAuthenticatedUserQuery } from '../../../data/queries/user/user.queries';
-import { useState } from 'react';
+import { BaseSyntheticEvent, useState } from 'react';
 import { useAuth } from '../../../data/store/slices/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -17,7 +17,7 @@ export function useLogin(): any {
     handleSubmit,
     control,
     formState: { errors }
-  } = useForm({
+  } = useForm<IAuthServicePayload>({
     resolver: yupResolver(LoginFormSchema)
   });
   const { authenticate } = useAuth();
@@ -50,7 +50,9 @@ export function useLogin(): any {
     {
       onSuccess: accessToken => {
         localStorage.setItem('accessToken', accessToken);
-        setEnabled(true);
+        setTimeout(() => {
+          setEnabled(true);
+        }, 2000);
       },
       onError: () => {
         toast.error('Usuário ou senha inválidos');
@@ -58,14 +60,13 @@ export function useLogin(): any {
     }
   );
 
-  function onSubmit(data: IAuthServicePayload): void {
-    if (data) {
+  function onSubmit(): (e?: BaseSyntheticEvent) => Promise<void> {
+    return handleSubmit(data => {
       mutation.mutate(data);
-    }
+    });
   }
 
   return {
-    handleSubmit,
     control,
     onSubmit,
     isLoading: mutation.isLoading ?? isLoading,

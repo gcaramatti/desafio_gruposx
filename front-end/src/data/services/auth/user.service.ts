@@ -15,7 +15,11 @@ class UserService {
   }
 
   async getAuthUser(): Promise<IGetAuthUser> {
-    const { data } = await api.get('/user');
+    const { data } = await api.get('/user', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    });
 
     return AuthUserMapper.toDomain(data.data);
   }
