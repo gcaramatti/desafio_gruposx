@@ -23,6 +23,8 @@ export const StyledInput = styled.input`
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.chineseSilver};
   background: transparent;
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ErrorMessage = styled.label`
@@ -30,4 +32,19 @@ export const ErrorMessage = styled.label`
   color: ${({ theme }) => theme.colors.danger};
   margin: 0;
   padding: 0;
+`;
+
+export const IconWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  > label {
+    margin: 0;
+  }
+
+  > span {
+    font-size: 1.6rem;
+  }
 `;

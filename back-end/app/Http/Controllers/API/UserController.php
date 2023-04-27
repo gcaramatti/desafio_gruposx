@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    
+    public function index() 
+    {
+        return Response(['data' => User::all()], 200);
+    }
+
     public function login(Request $request): Response
     {
         $validator = Validator::make($request->all(), [

@@ -1,7 +1,7 @@
 import { Mask } from '../../../../shared/utils';
-import { ICompany, IPersistenceCompany } from '../../auth/userService.types';
+import { ICompany, IPersistenceCompany } from '../companyService.types';
 
-class getAllCompaniesMapper {
+class GetAllCompaniesMapper {
   toDomain(persistenceCompany: IPersistenceCompany): ICompany {
     return {
       id: persistenceCompany.id,
@@ -18,4 +18,4 @@ class getAllCompaniesMapper {
   }
 }
 
-export default new getAllCompaniesMapper();
+export default new GetAllCompaniesMapper();

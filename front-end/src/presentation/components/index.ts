@@ -1,7 +1,9 @@
 export { Button } from './Button/Button.component';
 export { InputText } from './Input/InputText/InputText.component';
+export { Select } from './Input/Select/Select.component';
 export { ToastComponent } from './Toast/Toast.component';
 export { CardDetails } from './CardDetails/CardDetails.component';
 export { Header } from './Header/Header.component';
 export { Modal } from './Modal/Modal.component';
 export { Loader } from './Loader/Loader.component';
+export { LoadInitialData } from './LoadInitialData/LoadInitialData.component';

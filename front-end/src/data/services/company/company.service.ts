@@ -1,7 +1,15 @@
 import api from '../api';
-import { ICompany, IPersistenceCompany } from '../auth/userService.types';
-import { ICompanyFormType } from './companyService.types';
-import { GetAllCompaniesMapper, CreateCompanyMapper } from './mapper';
+import {
+  ICompany,
+  ICompanyFormType,
+  IGetCompanyDetails,
+  IPersistenceCompany
+} from './companyService.types';
+import {
+  GetAllCompaniesMapper,
+  CreateCompanyMapper,
+  GetCompanyDetails
+} from './mapper';
 
 class CompanyService {
   async getAllCompanies(): Promise<ICompany[]> {
@@ -23,6 +31,18 @@ class CompanyService {
     );
 
     return data;
+  }
+
+  async deleteCompany(companyId: number): Promise<null> {
+    const { data } = await api.delete(`/delete-company/${companyId}`);
+
+    return data;
+  }
+
+  async getCompanyDetails(companyId: number): Promise<IGetCompanyDetails> {
+    const { data } = await api.get(`/company-users/${companyId}`);
+
+    return GetCompanyDetails.toDomain(data.data);
   }
 }
 

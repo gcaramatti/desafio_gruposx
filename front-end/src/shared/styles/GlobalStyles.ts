@@ -74,7 +74,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .Toastify__toast--success {
-        background: ${({ theme }) => theme.colors.secondary};
+        background: ${({ theme }) => theme.colors.success};
     }
 
     .Toastify__progress-bar {
@@ -98,5 +98,60 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 1.3rem;
         font-weight: 400;
         color: ${({ theme }) => theme.colors.white};
+    }
+
+    .react-select__control {
+        border-top: 0 !important;
+        border-bottom: 1px solid yellow;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .react-select__control--is-focused {
+        border-top: 0 !important;
+        border-bottom: 1px solid yellow;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .react-select__option {
+        font-size: 1.3rem !important;
+    }
+
+    .react-select__indicator-separator {
+        display: none !important;
+    }
+
+    .css-t3ipsp-control:hover,
+    .css-t3ipsp-control {
+        border-color: transparent !important;
+        box-shadow: none !important;
+        border-top: 0 !important;
+        border-bottom: 1px solid #2684FF !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .react-select__single-value, .react-select__placeholder {
+        font-size: 1.3rem;
+    }
+
+    .react-confirm-alert-body {
+        font-size: 1.2rem !important;
+
+        > h1 {
+            font-weight: 400;
+        }
+    }
+
+    .confirm_delete {
+        background-color: ${({ theme }) => theme.colors.secondary} !important;
+    }
+
+    .cancel_delete {
+        background-color: ${({ theme }) => theme.colors.danger} !important;
     }
 `;

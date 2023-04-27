@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding: 2.1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between !important;
 
   > ul {
     display: flex;

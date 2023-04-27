@@ -12,11 +12,21 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   border-radius: 0.3rem;
-  min-width: 70rem;
+  width: 70rem;
   max-width: 70rem;
   box-shadow: 1px 1px 5px 1px ${({ theme }) => theme.colors.chineseSilver};
   display: flex;
   background-color: ${({ theme }) => theme.colors.alabaster};
+
+  @media screen and (max-width: 500px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 90%;
+
+    > div {
+      padding: 5rem 0;
+    }
+  }
 `;
 
 export const Form = styled.form`

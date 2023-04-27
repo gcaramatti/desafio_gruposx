@@ -12,6 +12,7 @@ export interface IInputProps<T extends FieldValues>
   placeholder: string;
   errorMessage?: string;
   icon?: ReactNode;
+  disabled?: boolean;
 }
 
 export type InputTextStylesType = Pick<IInputProps<FieldValues>, 'icon'>;

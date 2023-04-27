@@ -8,7 +8,7 @@ export function useGetAddressByPostalCode({
 }: IUseGetAddressByPostalCodeParams) {
   const queryClient = useQueryClient();
 
-  const { data, refetch, isLoading } = useQuery(
+  const { data, isLoading } = useQuery(
     getAddresByPostalCodeQuery.key,
     async () => {
       return await getAddresByPostalCodeQuery.query(postalCode);
@@ -25,5 +25,5 @@ export function useGetAddressByPostalCode({
     }
   );
 
-  return { data, refetch, isLoading };
+  return { data, isLoading };
 }

@@ -1,3 +1,5 @@
+import { ICompany, IPersistenceCompany } from '../company/companyService.types';
+
 export interface IAuthServicePayload {
   email: string;
   password: string;
@@ -12,7 +14,19 @@ export interface IGetAuthUser {
   company: ICompany;
 }
 
-export type IUserFormType = Omit<IUser, 'id'>;
+export interface IUserForm {
+  cpf: string;
+  name: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  postalCode: string;
+  street: string;
+  number: string;
+  neighborhood: string;
+  state: string;
+  companyId: string;
+}
 
 export interface IUser {
   id: number;
@@ -45,32 +59,18 @@ export interface IPersistenceUser {
   updated_at: null;
 }
 
-export interface ICompany {
-  id: number;
-  cnpj: string;
-  socialName: string;
+export interface IDomainToPersistenceUser {
+  cpf: string;
+  name: string;
   email: string;
-  phoneNumber: string;
-  postalCode: string;
-  street: string;
-  number: string;
-  neighborhood: string;
-  state: string;
-}
-
-export interface IPersistenceCompany {
-  id: number;
-  cnpj: string;
-  social_name: string;
-  email: string;
+  password: string;
   phone_number: string;
   postal_code: string;
   street: string;
   number: string;
   neighborhood: string;
   state: string;
-  created_at: null;
-  updated_at: null;
+  company_id: number;
 }
 
 export interface IPersistenceGetAuthUser {

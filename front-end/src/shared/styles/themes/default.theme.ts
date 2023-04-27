@@ -11,7 +11,8 @@ export const defaultTheme = {
     quartz: '#4c4c4cbf',
     danger: '#bb2124',
     jade: '#00523b',
-    transparent: 'transparent'
+    transparent: 'transparent',
+    success: '#408140'
   }
 };
 

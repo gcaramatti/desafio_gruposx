@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { type IAuthUserSlice } from './authSlice.types';
-import { ICompany, IUser } from '../../services/auth/userService.types';
+import { IUser } from '../../services/auth/userService.types';
+import { ICompany } from '../../services/company/companyService.types';
 
 const initialState: IAuthUserSlice = {
   user: {} as IUser,

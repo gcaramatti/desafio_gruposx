@@ -8,5 +8,5 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-width: 30rem;
+  width: 35rem;
 `;

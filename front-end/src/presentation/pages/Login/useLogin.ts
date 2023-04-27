@@ -52,7 +52,7 @@ export function useLogin(): any {
         localStorage.setItem('accessToken', accessToken);
         setTimeout(() => {
           setEnabled(true);
-        }, 2000);
+        }, 50);
       },
       onError: () => {
         toast.error('Usuário ou senha inválidos');

@@ -15,6 +15,30 @@ class CompanyController extends Controller
         return Response(['data' => Company::all()], 200);
     }
 
+    public function getCompanyUsers($companyId) 
+    {
+        if(!isset($companyId)) {
+            return Response(['message' => 'Empresa não especificada'], 400);
+        }
+        
+        $usersByCompany = DB::table('users')
+        ->join('companies', 'users.company_id' , '=', 'companies.id')
+        ->where('companies.id', '=', $companyId)
+        ->select('users.id', 'users.cpf', 'users.name', 'users.email', 
+        'users.phone_number', 'users.postal_code', 
+        'users.street', 'users.number', 'users.neighborhood', 
+        'users.state', 'users.company_id')
+        ->get();
+
+        $company = DB::table('companies')
+        ->where('companies.id', '=', $companyId)
+        ->select('*')
+        ->get();
+
+        return Response(['data' => ['user' => $usersByCompany, 'company' => $company[0]]], 200);
+
+    }
+
     public function store(Request $request)
     {
         if(!is_null($request)){

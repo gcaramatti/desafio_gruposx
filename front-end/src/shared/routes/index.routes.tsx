@@ -1,5 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import { NotFoundPage, LoginPage, HomePage } from '../../presentation/pages';
+import {
+  NotFoundPage,
+  LoginPage,
+  HomePage,
+  CompanyDetailsPage
+} from '../../presentation/pages';
 import ConditionalRoute from './custom/conditional.routes';
 import { useAuth } from '../../data/store/slices/useAuth';
 import { Header } from '../../presentation/components';
@@ -30,6 +35,8 @@ export function AppRoutes() {
             </ConditionalRoute>
           }
         />
+
+        <Route path='/company/:companyId' element={<CompanyDetailsPage />} />
       </Routes>
     </>
   );

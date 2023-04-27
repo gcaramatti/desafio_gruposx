@@ -2,6 +2,7 @@ import { Controller, FieldValues, Path, PathValue } from 'react-hook-form';
 import {
   Container,
   ErrorMessage,
+  IconWrapper,
   StyledInput
 } from './InputTextComponent.styles';
 import { IInputProps } from './InputTextComponent.types';
@@ -16,30 +17,35 @@ export function InputText<T extends FieldValues>({
   placeholder = '',
   errorMessage = '',
   icon,
-  onBlur
+  onBlur,
+  disabled = false
 }: IInputProps<T>): JSX.Element {
   return (
     <>
-      <Container icon={icon}>
-        {icon && <span>{icon}</span>}
+      <Container>
+        <IconWrapper>
+          {icon && <span>{icon}</span>}
 
-        <Controller
-          name={name as Path<T>}
-          control={control}
-          defaultValue={defaultValue as PathValue<T, Path<T>>}
-          render={({ field: { onChange, value } }) => (
-            <StyledInput
-              type={type}
-              name={name}
-              placeholder={placeholder}
-              onChange={e => {
-                onChange(Mask.apply(mask, e.target.value));
-              }}
-              value={value}
-              onBlur={onBlur}
-            />
-          )}
-        />
+          <Controller
+            name={name as Path<T>}
+            control={control}
+            defaultValue={defaultValue as PathValue<T, Path<T>>}
+            render={({ field: { onChange, value } }) => (
+              <StyledInput
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                disabled={disabled}
+                onChange={e => {
+                  onChange(Mask.apply(mask, e.target.value));
+                }}
+                value={value}
+                defaultValue={defaultValue}
+                onBlur={onBlur}
+              />
+            )}
+          />
+        </IconWrapper>
 
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </Container>

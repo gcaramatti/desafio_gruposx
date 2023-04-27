@@ -7,3 +7,10 @@ export const createCompanyMutation = {
     return await CompanyService.createCompany(payload);
   }
 };
+
+export const deleteCompanyMutation = {
+  key: ['deleteCompany'],
+  mutation: async (companyId: number): Promise<null> => {
+    return await CompanyService.deleteCompany(companyId);
+  }
+};

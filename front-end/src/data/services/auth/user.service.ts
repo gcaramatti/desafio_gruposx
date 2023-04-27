@@ -1,9 +1,10 @@
 import {
   IAuthService,
   IAuthServicePayload,
-  IGetAuthUser
+  IGetAuthUser,
+  IUserForm
 } from './userService.types';
-import { AuthUserMapper } from './mapper';
+import { AuthUserMapper, CreateUserMapper } from './mapper';
 
 import api from '../api';
 
@@ -22,6 +23,20 @@ class UserService {
     });
 
     return AuthUserMapper.toDomain(data.data);
+  }
+
+  async createUser(payload: IUserForm): Promise<null> {
+    const { data } = await api.post(
+      '/new-user',
+      CreateUserMapper.toPersistence(payload),
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      }
+    );
+
+    return data;
   }
 }
 

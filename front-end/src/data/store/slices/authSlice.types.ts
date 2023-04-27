@@ -1,4 +1,5 @@
-import { ICompany, IUser } from '../../services/auth/userService.types';
+import { IUser } from '../../services/auth/userService.types';
+import { ICompany } from '../../services/company/companyService.types';
 
 export interface IAuthUserSlice {
   user: IUser;

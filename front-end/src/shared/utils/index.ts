@@ -1,3 +1,3 @@
 import Mask from './masks/mask.util';
-
-export { Mask };
+import Convert from './format/format.util';
+export { Mask, Convert };

@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { getAuthenticatedUserQuery } from '../../../data/queries/user/user.queries';
 import { authenticate } from '../../../data/store/slices/auth.slice';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAuth } from '../../../data/store/slices/useAuth';
 import { useEffect, useState } from 'react';
@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 export function useLoadInitialData() {
   const [enabled, setEnabled] = useState(false);
   const navigation = useNavigate();
+  const location = useLocation();
+
   const accessToken = localStorage.getItem('accessToken');
   const { isLogged } = useAuth();
 
@@ -19,7 +21,7 @@ export function useLoadInitialData() {
   }, [accessToken, isLogged]);
 
   const { isLoading } = useQuery(
-    'anotherKey',
+    'getAuthenticatedUserWhenAccessToken',
     getAuthenticatedUserQuery.query,
     {
       onSuccess: data => {
@@ -29,7 +31,7 @@ export function useLoadInitialData() {
           isLogged: true
         });
 
-        navigation(-1);
+        if (location.pathname === '/login') navigation('/');
       },
       onError: () => {
         toast.error('Erro ao logar');

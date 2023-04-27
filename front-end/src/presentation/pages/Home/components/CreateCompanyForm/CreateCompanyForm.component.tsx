@@ -7,8 +7,7 @@ export function CreateCompanyForm({
 }: ICreateCompanyForm): JSX.Element {
   const { onBlur, isLoading } = useCreateCompanyForm({
     watch: createCompanyForm.watchCreateCompanyForm,
-    setValue: createCompanyForm.setValueCompanyForm,
-    clearErros: createCompanyForm.clearErrorsCompanyForm
+    setValue: createCompanyForm.setValueCompanyForm
   });
 
   return (

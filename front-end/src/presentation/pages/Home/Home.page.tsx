@@ -5,6 +5,7 @@ import { useHomePage } from './useHomePage';
 import { RiBuildingLine, RiUserAddLine, RiEyeLine } from 'react-icons/ri';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { CreateCompanyForm } from './components/CreateCompanyForm/CreateCompanyForm.component';
+import { CreateUserForm } from './components/CreateUserForm/CreateUserForm.component';
 
 export function HomePage(): JSX.Element {
   const {
@@ -12,12 +13,15 @@ export function HomePage(): JSX.Element {
     setModalOpen,
     allCompanies,
     createCompanyForm,
-    isLoading
+    createUserForm,
+    isLoading,
+    onClickDeleteCompany
   } = useHomePage();
 
   return (
     <Container>
       <Loader isLoading={isLoading} />
+
       <ActionButtons>
         <Button
           onClick={() => setModalOpen('createCompany')}
@@ -59,9 +63,7 @@ export function HomePage(): JSX.Element {
 
                 <ActionButtons>
                   <Link to={`/company/${value.id}`}>
-                    <Button>
-                      <RiEyeLine />
-                    </Button>
+                    <Button icon={<RiEyeLine />}>Ver funcionários</Button>
                   </Link>
 
                   <Button
@@ -69,9 +71,10 @@ export function HomePage(): JSX.Element {
                       backgroundColor: 'danger',
                       color: 'white'
                     }}
-                    onClick={() => alert('Clicked')}
+                    icon={<RiDeleteBin6Line />}
+                    onClick={onClickDeleteCompany(value.id)}
                   >
-                    <RiDeleteBin6Line />
+                    Apagar empresa
                   </Button>
                 </ActionButtons>
               </CardDetails>
@@ -95,8 +98,12 @@ export function HomePage(): JSX.Element {
         isOpen={modalOpen === 'createUser'}
         onClose={() => setModalOpen('closed')}
         title='Cadastrar funcionário'
+        onSubmit={createUserForm.createUserFormSubmit()}
       >
-        Olá cachorro
+        <CreateUserForm
+          createUserForm={createUserForm}
+          companyList={allCompanies}
+        />
       </Modal>
     </Container>
   );
