@@ -2,15 +2,21 @@ import {
   IAuthService,
   IAuthServicePayload,
   IGetAuthUser,
+  IUser,
+  IUserDetails,
   IUserForm
 } from './userService.types';
-import { AuthUserMapper, CreateUserMapper } from './mapper';
+import { AuthUserMapper, CreateUserMapper, GetUsersMapper } from './mapper';
 
 import api from '../api';
 
 class UserService {
   async authenticate(payload: IAuthServicePayload): Promise<IAuthService> {
-    const { data } = await api.post('/login', payload);
+    const { data } = await api.post('/login', payload, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    });
 
     return data;
   }
@@ -37,6 +43,26 @@ class UserService {
     );
 
     return data;
+  }
+
+  async deleteUser(id: number): Promise<null> {
+    const { data } = await api.delete(`/delete-user/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    });
+
+    return data;
+  }
+
+  async getUserDetails(userId: number): Promise<IUserDetails> {
+    const { data } = await api.get(`/user/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    });
+
+    return GetUsersMapper.toDomain(data.data);
   }
 }
 

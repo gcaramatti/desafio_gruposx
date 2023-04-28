@@ -63,7 +63,7 @@ export function HomePage(): JSX.Element {
 
                 <ActionButtons>
                   <Link to={`/company/${value.id}`}>
-                    <Button icon={<RiEyeLine />}>Ver funcionários</Button>
+                    <Button icon={<RiEyeLine />}>Detalhes</Button>
                   </Link>
 
                   <Button

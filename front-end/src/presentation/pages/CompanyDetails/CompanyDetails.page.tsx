@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Button, InputText } from '../../components';
-import { RiHome3Line, RiEditLine } from 'react-icons/ri';
+import { Button, Loader } from '../../components';
+import { RiHome3Line } from 'react-icons/ri';
 import {
   ActionButtons,
   CompanyData,
@@ -8,10 +8,11 @@ import {
   Content
 } from './CompanyDetailsPage.styles';
 import { useCompanyDetails } from './useCompanyDetails';
-import { EditCompanyForm } from './EditCompanyForm/EditCompanyForm.component';
+import { EditCompanyForm } from './components/EditCompanyForm/EditCompanyForm.component';
+import { CollaboratorsTable } from './components/CollaboratorsTable/CollaboratorsTable.component';
 
 export function CompanyDetailsPage(): JSX.Element {
-  const { data, editCompanyForm } = useCompanyDetails();
+  const { data, editCompanyForm, isLoading, refetch } = useCompanyDetails();
 
   return (
     <Container>
@@ -29,7 +30,13 @@ export function CompanyDetailsPage(): JSX.Element {
           disabled={editCompanyForm.disabledCompanyButton}
           setDisabled={editCompanyForm.setDisabledCompanyButton}
         />
+
+        <CompanyData>
+          <CollaboratorsTable userData={data?.user} refetch={refetch} />
+        </CompanyData>
       </Content>
+
+      <Loader isLoading={isLoading} />
     </Container>
   );
 }

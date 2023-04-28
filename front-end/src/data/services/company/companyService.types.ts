@@ -7,6 +7,11 @@ export type IStorePersistenceCompanyData = Omit<
   'id' | 'updated_at' | 'created_at'
 >;
 
+export interface IUpdateCompanyPayload {
+  data: ICompanyFormType;
+  id: number;
+}
+
 export interface IGetCompanyDetails {
   user: IUser[];
   company: ICompany;

@@ -21,3 +21,9 @@ export interface ICreateUserFormPayload {
     setValueUserForm: UseFormSetValue<IUserForm>;
   };
 }
+
+export interface IUseCreateUserForm {
+  watch: UseFormWatch<IUserForm>;
+  setValue: UseFormSetValue<IUserForm>;
+  companyList: ICompany[] | undefined;
+}

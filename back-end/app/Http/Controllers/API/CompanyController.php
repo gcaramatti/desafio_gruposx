@@ -61,6 +61,28 @@ class CompanyController extends Controller
         return Response(['data' => 'Não autorizado'], 401);
     }
 
+    public function update(Request $request, $id) {
+        if($request) {
+            $company = Company::find($id);
+            
+            $company->cnpj = $request->cnpj;
+            $company->social_name = $request->social_name;
+            $company->email = $request->email;
+            $company->phone_number = $request->phone_number;
+            $company->postal_code = $request->postal_code;
+            $company->street = $request->street;
+            $company->number = $request->number;
+            $company->neighborhood = $request->neighborhood;
+            $company->state = $request->state;
+
+            $company->save();
+
+            return Response(['data' => 'Empresa atualizada com sucesso'], 200);
+        }
+        
+        return Response(['data' => 'Erro ao atualizar empresa'], 400);
+    }
+
     public function show($id)
     {
         if($id) {

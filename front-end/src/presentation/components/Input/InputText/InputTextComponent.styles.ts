@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { InputTextStylesType } from './InputTextComponent.types';
+import {
+  IInputTextStylesType,
+  ILabelInputTextStyleTyle
+} from './InputTextComponent.types';
 
-export const Container = styled.div<InputTextStylesType>`
+export const Container = styled.div<IInputTextStylesType>`
   width: 100%;
   display: flex;
   align-items: ${({ icon }) => (icon ? 'center' : 'flex-start')};
@@ -18,13 +21,18 @@ export const Container = styled.div<InputTextStylesType>`
 `;
 
 export const StyledInput = styled.input`
-  padding: 1rem 0;
+  padding: 1.3rem 0.5rem;
   border: 0;
-  border-bottom: 0.1rem solid ${({ theme }) => theme.colors.chineseSilver};
+  border-bottom: 0.1rem solid ${({ theme }) => theme.colors.secondary};
   background: transparent;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &:disabled {
+    border-bottom: 0.1rem solid ${({ theme }) => theme.colors.chineseSilver};
+    background-color: #f2f2f2;
+  }
 `;
 
 export const ErrorMessage = styled.label`
@@ -35,6 +43,7 @@ export const ErrorMessage = styled.label`
 `;
 
 export const IconWrapper = styled.div`
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
@@ -47,4 +56,16 @@ export const IconWrapper = styled.div`
   > span {
     font-size: 1.6rem;
   }
+`;
+
+export const InputLabel = styled.label<ILabelInputTextStyleTyle>`
+  position: absolute;
+  padding: 1rem 0;
+  pointer-events: none;
+  transition: 0.5s;
+  top: -1.4rem;
+  left: 0;
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.colors.chineseSilver : theme.colors.secondary};
+  font-size: 1.4rem;
 `;

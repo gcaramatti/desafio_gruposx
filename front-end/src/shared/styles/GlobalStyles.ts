@@ -100,7 +100,16 @@ export const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.colors.white};
     }
 
+    .react-select--is-disabled {
+
+        > .react-select__control {
+            border-color: ${({ theme }) => theme.colors.softGray} !important;
+        }
+    }
+
     .react-select__control {
+        border-color: ${({ theme }) => theme.colors.secondary} !important;
+        background-color: transparent !important;
         border-top: 0 !important;
         border-bottom: 1px solid yellow;
         border-left: 0 !important;

@@ -19,3 +19,10 @@ export const createUserMutation = {
     return await UserService.createUser(payload);
   }
 };
+
+export const deleteUserMutation = {
+  key: ['deleteUser'],
+  mutation: async (id: number): Promise<null> => {
+    return await UserService.deleteUser(id);
+  }
+};

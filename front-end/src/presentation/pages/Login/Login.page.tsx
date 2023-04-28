@@ -22,6 +22,7 @@ export function LoginPage(): JSX.Element {
             control={control}
             errorMessage={errors.email?.message}
             icon={<RiMailLine />}
+            showLabelAbove={false}
           />
 
           <InputText
@@ -31,6 +32,7 @@ export function LoginPage(): JSX.Element {
             control={control}
             errorMessage={errors.password?.message}
             icon={<RiLockPasswordLine />}
+            showLabelAbove={false}
           />
 
           <Button>Logar</Button>

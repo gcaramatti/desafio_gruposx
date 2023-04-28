@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HomePageModalType } from './HomePage.types';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getAllCompaniesQuery } from '../../../data/queries/company/company.queries';
 import { toast } from 'react-toastify';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -19,6 +19,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export function useHomePage() {
   const [modalOpen, setModalOpen] = useState<HomePageModalType>('closed');
+  const queryClient = useQueryClient();
+
   const {
     handleSubmit: createCompanyFormHandleSubmit,
     control: createCompanyFormControl,
@@ -43,17 +45,34 @@ export function useHomePage() {
     resolver: yupResolver(CreateUserFormSchema)
   });
 
+  const selectCompanyOptions: { value: string; label: string }[] = [];
+
   const {
     data: allCompanies,
     refetch,
     isLoading
   } = useQuery(getAllCompaniesQuery.key, getAllCompaniesQuery.query, {
+    onSuccess: data => {
+      queryClient.setQueryData(getAllCompaniesQuery.key, data);
+
+      data.map(value => {
+        selectCompanyOptions.push({
+          value: String(value.id),
+          label: value.socialName
+        });
+      });
+
+      localStorage.setItem(
+        'selectCompanyOptions',
+        JSON.stringify(selectCompanyOptions)
+      );
+    },
     onError: () => {
       toast.error('Erro desconhecido');
     }
   });
 
-  const useCreateCompanyMutation = useMutation(
+  const createCompanyUseMutation = useMutation(
     createCompanyMutation.key,
     async (payload: ICompanyFormType) => {
       return await createCompanyMutation.mutation(payload);
@@ -126,7 +145,7 @@ export function useHomePage() {
 
   function createCompanyFormSubmit() {
     return createCompanyFormHandleSubmit(data => {
-      useCreateCompanyMutation.mutate(data);
+      createCompanyUseMutation.mutate(data);
       resetCreateCompanyForm();
     });
   }
@@ -144,7 +163,7 @@ export function useHomePage() {
     allCompanies,
     isLoading:
       isLoading ??
-      useCreateCompanyMutation.isLoading ??
+      createCompanyUseMutation.isLoading ??
       useCreateUserMutation.isLoading ??
       deleteCompanyUseMutation.isLoading,
     createCompanyForm: {

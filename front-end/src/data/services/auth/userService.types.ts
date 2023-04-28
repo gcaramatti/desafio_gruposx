@@ -28,6 +28,19 @@ export interface IUserForm {
   companyId: string;
 }
 
+export interface IUserDetailsForm {
+  cpf: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  postalCode: string;
+  street: string;
+  number: string;
+  neighborhood: string;
+  state: string;
+  companyId: number;
+}
+
 export interface IUser {
   id: number;
   cpf: string;
@@ -40,6 +53,36 @@ export interface IUser {
   neighborhood: string;
   state: string;
   companyId: number;
+}
+
+export interface IUserDetails {
+  id: number;
+  cpf: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  postalCode: string;
+  street: string;
+  number: string;
+  neighborhood: string;
+  state: string;
+  companyName: string;
+  companyId: number;
+}
+
+export interface IPersistenceUserDetails {
+  id: number;
+  cpf: string;
+  name: string;
+  email: string;
+  phone_number: string;
+  postal_code: string;
+  street: string;
+  number: string;
+  neighborhood: string;
+  state: string;
+  company_name: string;
+  company_id: number;
 }
 
 export interface IPersistenceUser {

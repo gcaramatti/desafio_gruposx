@@ -3,6 +3,7 @@ import {
   Container,
   ErrorMessage,
   IconWrapper,
+  InputLabel,
   StyledInput
 } from './InputTextComponent.styles';
 import { IInputProps } from './InputTextComponent.types';
@@ -18,13 +19,18 @@ export function InputText<T extends FieldValues>({
   errorMessage = '',
   icon,
   onBlur,
-  disabled = false
+  disabled = false,
+  showLabelAbove = true
 }: IInputProps<T>): JSX.Element {
   return (
     <>
       <Container>
         <IconWrapper>
           {icon && <span>{icon}</span>}
+
+          {showLabelAbove && (
+            <InputLabel disabled={disabled}>{placeholder}</InputLabel>
+          )}
 
           <Controller
             name={name as Path<T>}

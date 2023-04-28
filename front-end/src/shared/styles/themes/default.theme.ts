@@ -4,7 +4,7 @@ export const defaultTheme = {
   colors: {
     black: '#000000',
     white: '#FFFFFF',
-    chineseSilver: '#c9c9c9',
+    chineseSilver: '#73837e',
     primary: '#2b2b2b',
     secondary: '#00c690',
     alabaster: '#f6f5ef',
@@ -12,7 +12,8 @@ export const defaultTheme = {
     danger: '#bb2124',
     jade: '#00523b',
     transparent: 'transparent',
-    success: '#408140'
+    success: '#408140',
+    softGray: '#a4a4a4bf'
   }
 };
 

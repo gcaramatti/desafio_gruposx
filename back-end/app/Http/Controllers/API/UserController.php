@@ -85,25 +85,43 @@ class UserController extends Controller
     public function show($id)
     {
         if($id) {
-            $userById = DB::table('users')
-                ->select('*')
-                ->where('id', $id)
+            $userWithCompany = DB::table('users')
+                ->join('companies', 'users.company_id' , '=', 'companies.id')
+                ->where('users.id', '=', $id)
+                ->select('users.id', 'users.cpf', 'users.name', 'users.email', 
+                'users.phone_number', 'users.postal_code', 
+                'users.street', 'users.number', 'users.neighborhood', 
+                'users.state', 'users.company_id', 'companies.social_name as company_name')
                 ->get();
 
-            if(count($userById) > 0){
-                return Response(['data' => $userById], 200);
+            if(count($userWithCompany) > 0){
+                return Response(['data' => $userWithCompany[0]], 200);
             }
         }
 
         return Response(['data' => null], 400);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        //
+    public function update(Request $request, $id) {
+        if($request) {
+            $user = User::find($id);
+            
+            $user->cpf = $request->cpf;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone_number = $request->phone_number;
+            $user->postal_code = $request->postal_code;
+            $user->street = $request->street;
+            $user->number = $request->number;
+            $user->neighborhood = $request->neighborhood;
+            $user->state = $request->state;
+
+            $user->save();
+
+            return Response(['data' => 'Usuário atualizado com sucesso'], 200);
+        }
+        
+        return Response(['data' => 'Erro ao atualizar usuário'], 400);
     }
 
     /**
@@ -113,7 +131,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        if($user->is_admin && Auth::check() && assert($id)) {
+        if(Auth::check() && assert($id)) {
             User::destroy($id);
 
             return Response(['data' => 'Usuario apagado com sucesso'], 200);

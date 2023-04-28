@@ -18,7 +18,7 @@ export const Content = styled.div`
   margin-top: 2rem;
 `;
 
-export const CompanyData = styled.div`
+export const CardUserData = styled.div`
   background-color: ${({ theme }) => theme.colors.alabaster};
   width: 80%;
   padding: 2rem;
@@ -28,8 +28,26 @@ export const CompanyData = styled.div`
   > button:first-child {
     float: right;
   }
+
+  > form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    > form {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 `;
 
-export const ActionButtons = styled.div`
+export const FormActionButtons = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 `;

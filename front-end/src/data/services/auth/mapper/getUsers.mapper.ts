@@ -1,8 +1,8 @@
-import { IPersistenceUser, IUser } from '../userService.types';
+import { IPersistenceUserDetails, IUserDetails } from '../userService.types';
 import { Mask } from '../../../../shared/utils';
 
 class GetUsers {
-  toDomain(persistenceUser: IPersistenceUser): IUser {
+  toDomain(persistenceUser: IPersistenceUserDetails): IUserDetails {
     return {
       id: persistenceUser.id,
       cpf: Mask.apply('cpf', persistenceUser.cpf),
@@ -14,7 +14,8 @@ class GetUsers {
       number: persistenceUser.number,
       neighborhood: persistenceUser.neighborhood,
       state: persistenceUser.state,
-      companyId: persistenceUser.company_id
+      companyId: persistenceUser.company_id,
+      companyName: persistenceUser.company_name
     };
   }
 }

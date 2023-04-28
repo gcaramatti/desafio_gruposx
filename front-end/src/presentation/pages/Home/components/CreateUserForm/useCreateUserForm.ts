@@ -1,7 +1,12 @@
 import { ICompany } from '../../../../../data/services/company/companyService.types';
 import { useGetAddressByPostalCode } from '../../../../../shared/global/hooks/useGetAddressByPostalCode';
+import { IUseCreateUserForm } from './CreateUserForm.types';
 
-export function useCreateUserForm({ watch, setValue, companyList }: any) {
+export function useCreateUserForm({
+  watch,
+  setValue,
+  companyList
+}: IUseCreateUserForm) {
   const postalCode = watch('postalCode', '');
 
   const { data, isLoading } = useGetAddressByPostalCode({

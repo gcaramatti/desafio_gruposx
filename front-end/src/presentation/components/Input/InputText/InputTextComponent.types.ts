@@ -13,6 +13,12 @@ export interface IInputProps<T extends FieldValues>
   errorMessage?: string;
   icon?: ReactNode;
   disabled?: boolean;
+  showLabelAbove?: boolean;
 }
 
-export type InputTextStylesType = Pick<IInputProps<FieldValues>, 'icon'>;
+export type IInputTextStylesType = Pick<IInputProps<FieldValues>, 'icon'>;
+
+export type ILabelInputTextStyleTyle = Pick<
+  IInputProps<FieldValues>,
+  'disabled'
+>;

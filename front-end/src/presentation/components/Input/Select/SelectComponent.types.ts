@@ -4,6 +4,7 @@ export interface ISelectProps {
   name: string;
   placeholder: string;
   control: Control<any>;
+  disabled?: boolean;
   options: { label: string; value: string | number }[];
 }
 

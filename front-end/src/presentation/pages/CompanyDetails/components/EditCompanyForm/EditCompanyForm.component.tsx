@@ -1,7 +1,9 @@
 import { RiEditLine } from 'react-icons/ri';
-import { Button, InputText } from '../../../components';
-import { ActionButtons } from '../CompanyDetailsPage.styles';
-import { CompanyData } from './EditCompanyFormComponent.styles';
+import { Button, InputText } from '../../../../components';
+import {
+  ActionButtonsWrapper,
+  CompanyData
+} from './EditCompanyFormComponent.styles';
 import { useEditCompanyForm } from './useEditCompanyForm';
 import { IEditCompanyFormPayload } from './EditCompanyFormComponent.types';
 
@@ -10,7 +12,10 @@ export function EditCompanyForm({
   disabled,
   setDisabled
 }: IEditCompanyFormPayload): JSX.Element {
-  const { control } = useEditCompanyForm();
+  const { control, onSubmitForm } = useEditCompanyForm({
+    companyData,
+    setDisabled
+  });
 
   return (
     <CompanyData>
@@ -24,18 +29,16 @@ export function EditCompanyForm({
 
       <h3>{`Empresa: ${companyData?.socialName}`}</h3>
 
-      <form>
+      <form onSubmit={onSubmitForm()}>
         <InputText
           name='socialName'
-          defaultValue={companyData?.socialName}
           control={control}
           placeholder='Razão Social'
           disabled={disabled}
         />
 
         <InputText
-          name='CNPJ'
-          defaultValue={companyData?.cnpj}
+          name='cnpj'
           control={control}
           placeholder='CNPJ'
           disabled={disabled}
@@ -44,7 +47,6 @@ export function EditCompanyForm({
 
         <InputText
           name='email'
-          defaultValue={companyData?.email}
           control={control}
           placeholder='E-mail'
           disabled={disabled}
@@ -52,7 +54,6 @@ export function EditCompanyForm({
 
         <InputText
           name='phoneNumber'
-          defaultValue={companyData?.phoneNumber}
           control={control}
           placeholder='Telefone + DDD'
           disabled={disabled}
@@ -61,7 +62,6 @@ export function EditCompanyForm({
 
         <InputText
           name='postalCode'
-          defaultValue={companyData?.postalCode}
           control={control}
           placeholder='Cep'
           disabled={disabled}
@@ -70,7 +70,6 @@ export function EditCompanyForm({
 
         <InputText
           name='street'
-          defaultValue={companyData?.street}
           control={control}
           placeholder='Rua'
           disabled={disabled}
@@ -78,7 +77,6 @@ export function EditCompanyForm({
 
         <InputText
           name='number'
-          defaultValue={companyData?.number}
           control={control}
           placeholder='Número'
           disabled={disabled}
@@ -86,7 +84,6 @@ export function EditCompanyForm({
 
         <InputText
           name='neighborhood'
-          defaultValue={companyData?.neighborhood}
           control={control}
           placeholder='Bairro'
           disabled={disabled}
@@ -94,15 +91,14 @@ export function EditCompanyForm({
 
         <InputText
           name='state'
-          defaultValue={companyData?.state}
           control={control}
           placeholder='Estado'
           disabled={disabled}
         />
 
         {!disabled && (
-          <div>
-            <Button type='button'>Salvar</Button>
+          <ActionButtonsWrapper>
+            <Button type='submit'>Salvar</Button>
             <Button
               type='button'
               onClick={() => setDisabled(true)}
@@ -110,7 +106,7 @@ export function EditCompanyForm({
             >
               Cancelar
             </Button>
-          </div>
+          </ActionButtonsWrapper>
         )}
       </form>
     </CompanyData>

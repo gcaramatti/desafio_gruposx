@@ -3,7 +3,8 @@ import {
   NotFoundPage,
   LoginPage,
   HomePage,
-  CompanyDetailsPage
+  CompanyDetailsPage,
+  UserDetails
 } from '../../presentation/pages';
 import ConditionalRoute from './custom/conditional.routes';
 import { useAuth } from '../../data/store/slices/useAuth';
@@ -37,6 +38,8 @@ export function AppRoutes() {
         />
 
         <Route path='/company/:companyId' element={<CompanyDetailsPage />} />
+
+        <Route path='/user/:userId' element={<UserDetails />} />
       </Routes>
     </>
   );

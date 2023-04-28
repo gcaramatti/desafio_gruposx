@@ -24,15 +24,17 @@ Route::post('login', [UserController::class, 'login']);
 
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
-    Route::get('user',[UserController::class,'userDetails']);
-    Route::get('users',[UserController::class,'index']);
-    Route::get('logout',[UserController::class,'logout']);
-    Route::post('new-user',[UserController::class, 'store']);
-    Route::get('user/{id}',[UserController::class, 'show']);
+    Route::get('user', [UserController::class,'userDetails']);
+    Route::get('users', [UserController::class,'index']);
+    Route::get('logout', [UserController::class,'logout']);
+    Route::post('new-user', [UserController::class, 'store']);
+    Route::get('user/{id}', [UserController::class, 'show']);
+    Route::put('update-user/{id}', [UserController::class, 'update']);
     Route::delete('delete-user/{id}', [UserController::class, 'destroy']);
 
-    Route::get('companies',[CompanyController::class, 'index']);
-    Route::get('company-users/{id}',[CompanyController::class, 'getCompanyUsers']);
-    Route::post('new-company',[CompanyController::class,'store']);
-    Route::delete('delete-company/{id}',[CompanyController::class, 'destroy']);
+    Route::get('companies', [CompanyController::class, 'index']);
+    Route::get('company-users/{id}', [CompanyController::class, 'getCompanyUsers']);
+    Route::put('update-company/{id}', [CompanyController::class,'update']);
+    Route::post('new-company', [CompanyController::class,'store']);
+    Route::delete('delete-company/{id}', [CompanyController::class, 'destroy']);
 });

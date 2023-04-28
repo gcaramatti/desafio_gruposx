@@ -3,7 +3,8 @@ import {
   ICompany,
   ICompanyFormType,
   IGetCompanyDetails,
-  IPersistenceCompany
+  IPersistenceCompany,
+  IUpdateCompanyPayload
 } from './companyService.types';
 import {
   GetAllCompaniesMapper,
@@ -27,20 +28,47 @@ class CompanyService {
   async createCompany(payload: ICompanyFormType): Promise<null> {
     const { data } = await api.post(
       '/new-company',
-      CreateCompanyMapper.toPersistence(payload)
+      CreateCompanyMapper.toPersistence(payload),
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      }
+    );
+
+    return data;
+  }
+
+  async updateCompany(payload: IUpdateCompanyPayload): Promise<null> {
+    const { data } = await api.put(
+      `/update-company/${payload.id}`,
+      CreateCompanyMapper.toPersistence(payload.data),
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      }
     );
 
     return data;
   }
 
   async deleteCompany(companyId: number): Promise<null> {
-    const { data } = await api.delete(`/delete-company/${companyId}`);
+    const { data } = await api.delete(`/delete-company/${companyId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    });
 
     return data;
   }
 
   async getCompanyDetails(companyId: number): Promise<IGetCompanyDetails> {
-    const { data } = await api.get(`/company-users/${companyId}`);
+    const { data } = await api.get(`/company-users/${companyId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+    });
 
     return GetCompanyDetails.toDomain(data.data);
   }

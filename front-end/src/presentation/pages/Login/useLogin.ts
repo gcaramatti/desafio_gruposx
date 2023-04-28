@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginFormSchema } from './LoginPage.schema';
 
-export function useLogin(): any {
+export function useLogin() {
   const navigation = useNavigate();
   const [enabled, setEnabled] = useState(false);
   const {
