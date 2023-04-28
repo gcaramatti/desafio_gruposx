@@ -1,6 +1,7 @@
 import UserService from '../../services/auth/user.service';
 import {
   IAuthServicePayload,
+  IUpdateUserPayload,
   IUserForm
 } from '../../services/auth/userService.types';
 
@@ -20,9 +21,23 @@ export const createUserMutation = {
   }
 };
 
+export const createUserOnboardingMutation = {
+  key: ['createUserOnboarding'],
+  mutation: async (payload: IUserForm): Promise<null> => {
+    return await UserService.createUserOnOnboarding(payload);
+  }
+};
+
 export const deleteUserMutation = {
   key: ['deleteUser'],
   mutation: async (id: number): Promise<null> => {
     return await UserService.deleteUser(id);
+  }
+};
+
+export const updateUserMutation = {
+  key: ['updateUser'],
+  mutation: async (payload: IUpdateUserPayload): Promise<null> => {
+    return await UserService.updateUser(payload);
   }
 };

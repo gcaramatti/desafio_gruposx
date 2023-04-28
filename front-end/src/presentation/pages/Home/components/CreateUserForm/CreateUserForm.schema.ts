@@ -8,6 +8,7 @@ export const CreateUserFormSchema = yup.object().shape({
     .email('Email inválido')
     .required('Esse campo é obrigatório'),
   password: yup.string().required('Esse campo é obrigatório'),
+  companyId: yup.string().required('Esse campo é obrigatório'),
   phoneNumber: yup.string().required('Esse campo é obrigatório'),
   postalCode: yup.string().required('Esse campo é obrigatório'),
   street: yup.string().required('Esse campo é obrigatório'),

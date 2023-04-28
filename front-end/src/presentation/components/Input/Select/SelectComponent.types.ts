@@ -6,6 +6,7 @@ export interface ISelectProps {
   control: Control<any>;
   disabled?: boolean;
   options: { label: string; value: string | number }[];
+  errorMessage?: string;
 }
 
 export interface ISelectOption {

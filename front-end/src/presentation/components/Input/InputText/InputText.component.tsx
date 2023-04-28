@@ -46,7 +46,6 @@ export function InputText<T extends FieldValues>({
                   onChange(Mask.apply(mask, e.target.value));
                 }}
                 value={value}
-                defaultValue={defaultValue}
                 onBlur={onBlur}
               />
             )}

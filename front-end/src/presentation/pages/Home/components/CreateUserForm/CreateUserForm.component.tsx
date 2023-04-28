@@ -38,6 +38,7 @@ export function CreateUserForm({
         name='companyId'
         options={selectCompanyOptions}
         control={createUserForm.createUserFormControl}
+        errorMessage={createUserForm.createUserFormErrors?.companyId?.message}
         placeholder='Empresa'
       />
 

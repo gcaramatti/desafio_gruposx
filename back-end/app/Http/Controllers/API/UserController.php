@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Auth;
@@ -70,6 +71,33 @@ class UserController extends Controller
     {
         if(!is_null($request)){
             $request['password'] = bcrypt($request['password']);
+            User::create($request->all());
+
+            return Response(['data' => 'Usuário criado com sucesso'], 200);
+        }
+
+        return Response(['data' => 'Erro ao criar usuário'], 400);
+    }
+
+    public function storeUserOnOnboarding(Request $request)
+    {
+        $noCompanyData = [ 
+            "cnpj" => "99999999999999",
+            "social_name" => "Sem empresa",
+            "email" => "semempresa@mail.com",
+            "phone_number" => "99999999999",
+            "postal_code" => "N/T",
+            "street" => "N/T",
+            "number" => "N/T",
+            "neighborhood" => "N/T",
+            "state" => "N/T"
+        ];
+
+        if(!is_null($request)) {
+            Company::create($noCompanyData);
+
+            $request['password'] = bcrypt($request['password']);
+            $request['company_id'] = Company::latest()->first()->id;
 
             User::create($request->all());
 
@@ -90,7 +118,7 @@ class UserController extends Controller
                 ->where('users.id', '=', $id)
                 ->select('users.id', 'users.cpf', 'users.name', 'users.email', 
                 'users.phone_number', 'users.postal_code', 
-                'users.street', 'users.number', 'users.neighborhood', 
+                'users.street', 'users.number', 'users.neighborhood', 'users.password', 
                 'users.state', 'users.company_id', 'companies.social_name as company_name')
                 ->get();
 

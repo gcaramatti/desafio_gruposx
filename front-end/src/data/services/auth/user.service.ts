@@ -2,6 +2,7 @@ import {
   IAuthService,
   IAuthServicePayload,
   IGetAuthUser,
+  IUpdateUserPayload,
   IUser,
   IUserDetails,
   IUserForm
@@ -45,6 +46,20 @@ class UserService {
     return data;
   }
 
+  async createUserOnOnboarding(payload: IUserForm): Promise<null> {
+    const { data } = await api.post(
+      '/new-user-onboarding',
+      CreateUserMapper.toPersistence(payload),
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      }
+    );
+
+    return data;
+  }
+
   async deleteUser(id: number): Promise<null> {
     const { data } = await api.delete(`/delete-user/${id}`, {
       headers: {
@@ -63,6 +78,20 @@ class UserService {
     });
 
     return GetUsersMapper.toDomain(data.data);
+  }
+
+  async updateUser(payload: IUpdateUserPayload): Promise<null> {
+    const { data } = await api.put(
+      `/update-user/${payload.id}`,
+      CreateUserMapper.toPersistence(payload.data),
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      }
+    );
+
+    return data;
   }
 }
 

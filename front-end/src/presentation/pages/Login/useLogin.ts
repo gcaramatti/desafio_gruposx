@@ -12,6 +12,7 @@ import { LoginFormSchema } from './LoginPage.schema';
 
 export function useLogin() {
   const navigation = useNavigate();
+  const [modalOpen, setModalOpen] = useState<'closed' | 'user'>('closed');
   const [enabled, setEnabled] = useState(false);
   const {
     handleSubmit,
@@ -70,6 +71,7 @@ export function useLogin() {
     control,
     onSubmit,
     isLoading: mutation.isLoading ?? isLoading,
+    modal: { modalOpen, setModalOpen },
     errors
   };
 }

@@ -12,7 +12,7 @@ import {
   createCompanyMutation,
   deleteCompanyMutation
 } from '../../../data/queries/company/company.mutations';
-import { CreateUserFormSchema } from './components/CreateUserForm/CreateUserFormSchema';
+import { CreateUserFormSchema } from './components/CreateUserForm/CreateUserForm.schema';
 import { createUserMutation } from '../../../data/queries/user/user.mutations';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -62,10 +62,11 @@ export function useHomePage() {
         });
       });
 
-      localStorage.setItem(
-        'selectCompanyOptions',
-        JSON.stringify(selectCompanyOptions)
-      );
+      if (!localStorage.getItem('selectCompanyOptions'))
+        localStorage.setItem(
+          'selectCompanyOptions',
+          JSON.stringify(selectCompanyOptions)
+        );
     },
     onError: () => {
       toast.error('Erro desconhecido');

@@ -28,6 +28,11 @@ export interface IUserForm {
   companyId: string;
 }
 
+export interface IUpdateUserPayload {
+  data: IUserForm;
+  id: number;
+}
+
 export interface IUserDetailsForm {
   cpf: string;
   name: string;
@@ -61,6 +66,7 @@ export interface IUserDetails {
   name: string;
   email: string;
   phoneNumber: string;
+  password: string;
   postalCode: string;
   street: string;
   number: string;
@@ -75,6 +81,7 @@ export interface IPersistenceUserDetails {
   cpf: string;
   name: string;
   email: string;
+  password: string;
   phone_number: string;
   postal_code: string;
   street: string;

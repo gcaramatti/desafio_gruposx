@@ -8,6 +8,7 @@ class GetUsers {
       cpf: Mask.apply('cpf', persistenceUser.cpf),
       name: persistenceUser.name,
       email: persistenceUser.email,
+      password: persistenceUser.password,
       phoneNumber: Mask.apply('phone', persistenceUser.phone_number),
       postalCode: Mask.apply('cep', persistenceUser.postal_code),
       street: persistenceUser.street,

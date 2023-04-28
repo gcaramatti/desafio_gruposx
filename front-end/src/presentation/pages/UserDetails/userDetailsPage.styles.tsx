@@ -47,7 +47,7 @@ export const CardUserData = styled.div`
 export const FormActionButtons = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
 `;

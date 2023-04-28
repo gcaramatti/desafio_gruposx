@@ -21,13 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('login', [UserController::class, 'login']);
+Route::post('new-user', [UserController::class, 'store']);
+Route::post('new-user-onboarding', [UserController::class, 'storeUserOnOnboarding']);
 
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('user', [UserController::class,'userDetails']);
     Route::get('users', [UserController::class,'index']);
     Route::get('logout', [UserController::class,'logout']);
-    Route::post('new-user', [UserController::class, 'store']);
     Route::get('user/{id}', [UserController::class, 'show']);
     Route::put('update-user/{id}', [UserController::class, 'update']);
     Route::delete('delete-user/{id}', [UserController::class, 'destroy']);

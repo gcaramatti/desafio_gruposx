@@ -54,7 +54,8 @@ export const GlobalStyles = createGlobalStyle`
 
     .ReactModal__Content {
         padding: 0 !important;
-        margin: 0 auto;
+        margin: 5% auto;
+        min-width: 80rem;
         width: fit-content;
         max-width: 50rem;
         height: fit-content;
@@ -105,6 +106,10 @@ export const GlobalStyles = createGlobalStyle`
         > .react-select__control {
             border-color: ${({ theme }) => theme.colors.softGray} !important;
         }
+    }
+
+    .react-select__value-container {
+        padding: 1.1rem 0 !important;
     }
 
     .react-select__control {

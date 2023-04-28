@@ -4,9 +4,10 @@ import { useLogin } from './useLogin';
 import logo from '../../../shared/assets/logo_sx.png';
 import { Loader } from '../../components';
 import { RiMailLine, RiLockPasswordLine } from 'react-icons/ri';
+import { ModalCreateUserCompany } from './components/ModalCreateUserCompany.component';
 
 export function LoginPage(): JSX.Element {
-  const { control, onSubmit, isLoading, errors } = useLogin();
+  const { control, onSubmit, isLoading, errors, modal } = useLogin();
 
   return (
     <Container>
@@ -38,10 +39,22 @@ export function LoginPage(): JSX.Element {
           <Button>Logar</Button>
         </Form>
 
+        <ModalCreateUserCompany
+          modal={{
+            isOpen: modal.modalOpen === 'user',
+            setModalOpen: modal.setModalOpen,
+            title: 'Cadastrar usuário',
+            onClose: () => modal.setModalOpen('closed')
+          }}
+          isLoading={false}
+        />
+
         <Secondary>
           <img src={logo} />
           <h2>Ainda não tem conta?</h2>
-          Registre-se aqui!
+          <Button type='button' onClick={() => modal.setModalOpen('user')}>
+            Registre-se aqui!
+          </Button>
         </Secondary>
       </Card>
     </Container>

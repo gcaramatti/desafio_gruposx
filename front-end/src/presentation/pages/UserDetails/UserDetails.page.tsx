@@ -6,7 +6,7 @@ import {
   Content,
   FormActionButtons
 } from './userDetailsPage.styles';
-import { Button, InputText, Select } from '../../components';
+import { Button, InputText, Loader, Select } from '../../components';
 import { RiEditLine, RiHome3Line } from 'react-icons/ri';
 import { useUserDetails } from './useUserDetails';
 
@@ -39,7 +39,7 @@ export function UserDetails(): JSX.Element {
 
           <h3>Editar usuário</h3>
 
-          <form>
+          <form onSubmit={editUserForm.onSubmit()}>
             <InputText
               disabled={disabled}
               name={'name'}
@@ -68,6 +68,14 @@ export function UserDetails(): JSX.Element {
               name={'email'}
               control={editUserForm.control}
               placeholder='E-mail'
+            />
+
+            <InputText
+              disabled={disabled}
+              name={'password'}
+              control={editUserForm.control}
+              placeholder='Senha'
+              type='password'
             />
 
             <InputText
@@ -129,6 +137,8 @@ export function UserDetails(): JSX.Element {
             )}
           </form>
         </CardUserData>
+
+        <Loader isLoading={editUserForm.isLoading} />
       </Content>
     </Container>
   );
