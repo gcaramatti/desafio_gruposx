@@ -8,7 +8,7 @@ import { BaseSyntheticEvent, useState } from 'react';
 import { useAuth } from '../../../data/store/slices/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { LoginFormSchema } from './LoginPage.schema';
+import { LoginFormSchema } from './Login.schema';
 
 export function useLogin() {
   const navigation = useNavigate();

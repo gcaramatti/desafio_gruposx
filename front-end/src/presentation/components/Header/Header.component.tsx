@@ -1,5 +1,5 @@
-import { Container } from './HeaderComponent.styles';
-import { IHeaderProps } from './HeaderComponent.types';
+import { Container } from './Header.styles';
+import { IHeaderProps } from './Header.types';
 import logo from '../../../shared/assets/logo_sx.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../data/store/slices/useAuth';

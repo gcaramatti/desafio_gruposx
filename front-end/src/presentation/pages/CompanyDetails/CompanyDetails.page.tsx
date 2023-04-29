@@ -6,7 +6,7 @@ import {
   CompanyData,
   Container,
   Content
-} from './CompanyDetailsPage.styles';
+} from './CompanyDetails.styles';
 import { useCompanyDetails } from './useCompanyDetails';
 import { EditCompanyForm } from './components/EditCompanyForm/EditCompanyForm.component';
 import { CollaboratorsTable } from './components/CollaboratorsTable/CollaboratorsTable.component';

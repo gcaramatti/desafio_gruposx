@@ -1,11 +1,8 @@
 import { RiEditLine } from 'react-icons/ri';
 import { Button, InputText } from '../../../../components';
-import {
-  ActionButtonsWrapper,
-  CompanyData
-} from './EditCompanyFormComponent.styles';
+import { ActionButtonsWrapper, CompanyData } from './EditCompanyForm.styles';
 import { useEditCompanyForm } from './useEditCompanyForm';
-import { IEditCompanyFormPayload } from './EditCompanyFormComponent.types';
+import { IEditCompanyFormPayload } from './EditCompanyForm.types';
 
 export function EditCompanyForm({
   companyData,

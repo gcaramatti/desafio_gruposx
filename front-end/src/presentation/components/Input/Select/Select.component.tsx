@@ -1,7 +1,7 @@
 import ReactSelect from 'react-select';
-import { ISelectOption, ISelectProps } from './SelectComponent.types';
+import { ISelectOption, ISelectProps } from './Select.types';
 import { Controller } from 'react-hook-form';
-import { Container } from './SelectComponent.styles';
+import { Container } from './Select.styles';
 
 export function Select({
   control,

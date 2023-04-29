@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HomePageModalType } from './HomePage.types';
+import { HomePageModalType } from './Home.types';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { getAllCompaniesQuery } from '../../../data/queries/company/company.queries';
 import { toast } from 'react-toastify';

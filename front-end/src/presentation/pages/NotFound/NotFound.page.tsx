@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Container, Content } from './NotFoundPage.styles';
+import { Container, Content } from './NotFound.styles';
 import { Button } from '../../components';
 
 export function NotFoundPage(): JSX.Element {

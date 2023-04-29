@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button, CardDetails, Loader, Modal } from '../../components';
-import { ActionButtons, Container, Content } from './HomePage.styles';
+import { ActionButtons, Container, Content } from './Home.styles';
 import { useHomePage } from './useHomePage';
 import { RiBuildingLine, RiUserAddLine, RiEyeLine } from 'react-icons/ri';
 import { RiDeleteBin6Line } from 'react-icons/ri';

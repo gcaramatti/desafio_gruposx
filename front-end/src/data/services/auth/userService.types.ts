@@ -76,6 +76,11 @@ export interface IUserDetails {
   companyId: number;
 }
 
+export type IUserDetailsOnCompanyPageType = Omit<
+  IUserDetails,
+  'password' | 'companyName'
+>;
+
 export interface IPersistenceUserDetails {
   id: number;
   cpf: string;

@@ -36,10 +36,22 @@ export function AppRoutes() {
             </ConditionalRoute>
           }
         />
-
-        <Route path='/company/:companyId' element={<CompanyDetailsPage />} />
-
-        <Route path='/user/:userId' element={<UserDetails />} />
+        <Route
+          path='/company/:companyId'
+          element={
+            <ConditionalRoute condition={isLogged} redirectTo='/login'>
+              <CompanyDetailsPage />
+            </ConditionalRoute>
+          }
+        />
+        <Route
+          path='/user/:userId'
+          element={
+            <ConditionalRoute condition={isLogged} redirectTo='/login'>
+              <UserDetails />
+            </ConditionalRoute>
+          }
+        />
       </Routes>
     </>
   );

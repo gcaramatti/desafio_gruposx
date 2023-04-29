@@ -1,4 +1,4 @@
-import { GetUsersMapper } from '../../auth/mapper';
+import { GetUsersMapper, GetUsersOnCompanyDetails } from '../../auth/mapper';
 import { IPersistenceUser } from '../../auth/userService.types';
 import {
   IGetCompanyDetails,
@@ -11,7 +11,7 @@ class GetCompanyDetails {
     return {
       user: companyDetails.user
         ? companyDetails.user.map((value: IPersistenceUser) =>
-            GetUsersMapper.toDomain(value)
+            GetUsersOnCompanyDetails.toDomain(value)
           )
         : [],
       company: GetAllCompaniesMapper.toDomain(companyDetails.company)

@@ -1,5 +1,5 @@
-import { Card } from './CardDetailsComponent.styles';
-import { ICardDetailsProps } from './CardDetailsComponent.types';
+import { Card } from './CardDetails.styles';
+import { ICardDetailsProps } from './CardDetails.types';
 
 export function CardDetails({ children }: ICardDetailsProps): JSX.Element {
   return <Card>{children}</Card>;

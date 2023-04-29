@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { IUseEditCompanyFormParams } from './EditCompanyFormComponent.types';
+import { IUseEditCompanyFormParams } from './EditCompanyForm.types';
 import { useMutation } from 'react-query';
 import { updateCompanyMutation } from '../../../../../data/queries/company/company.mutations';
 import {

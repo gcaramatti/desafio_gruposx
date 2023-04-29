@@ -5,8 +5,8 @@ import {
   IconWrapper,
   InputLabel,
   StyledInput
-} from './InputTextComponent.styles';
-import { IInputProps } from './InputTextComponent.types';
+} from './InputText.styles';
+import { IInputProps } from './InputText.types';
 import { Mask } from '../../../../shared/utils';
 
 export function InputText<T extends FieldValues>({

@@ -1,5 +1,5 @@
-import { IButtonProps } from './ButtonComponent.types';
-import { Container } from './ButtonComponent.styles';
+import { IButtonProps } from './Button.types';
+import { Container } from './Button.styles';
 
 export function Button({
   children,

@@ -1,7 +1,6 @@
 import UserService from '../../services/auth/user.service';
 import {
   IGetAuthUser,
-  IUser,
   IUserDetails
 } from '../../services/auth/userService.types';
 

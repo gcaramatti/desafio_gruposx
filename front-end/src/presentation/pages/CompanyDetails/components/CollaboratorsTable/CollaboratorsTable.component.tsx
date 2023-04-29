@@ -4,8 +4,8 @@ import {
   Container,
   TdActionButtons,
   UserTable
-} from './CollaboratorsTableComponent.styles';
-import { ICollaboratorsTableProps } from './CollaboratorsTableComponent.types';
+} from './CollaboratorsTable.styles';
+import { ICollaboratorsTableProps } from './CollaboratorsTable.types';
 import { Link } from 'react-router-dom';
 import { useCollaboratorsTable } from './useCollaboratorsTable';
 

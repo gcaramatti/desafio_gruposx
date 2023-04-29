@@ -1,5 +1,5 @@
 import { Button, InputText } from '../../components';
-import { Card, Container, Form, Secondary } from './LoginPage.styles';
+import { Card, Container, Form, Secondary } from './Login.styles';
 import { useLogin } from './useLogin';
 import logo from '../../../shared/assets/logo_sx.png';
 import { Loader } from '../../components';

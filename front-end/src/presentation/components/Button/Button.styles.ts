@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonStylesType } from './ButtonComponent.types';
+import { ButtonStylesType } from './Button.types';
 
 export const Container = styled.button<ButtonStylesType>`
   background-color: ${({ theme, customButton }) =>

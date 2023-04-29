@@ -3,7 +3,6 @@ import {
   IAuthServicePayload,
   IGetAuthUser,
   IUpdateUserPayload,
-  IUser,
   IUserDetails,
   IUserForm
 } from './userService.types';

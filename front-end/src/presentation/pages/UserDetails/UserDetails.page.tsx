@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { ActionButtons } from '../Home/HomePage.styles';
+import { ActionButtons } from '../Home/Home.styles';
 import {
   CardUserData,
   Container,
   Content,
   FormActionButtons
-} from './userDetailsPage.styles';
+} from './userDetails.styles';
 import { Button, InputText, Loader, Select } from '../../components';
 import { RiEditLine, RiHome3Line } from 'react-icons/ri';
 import { useUserDetails } from './useUserDetails';

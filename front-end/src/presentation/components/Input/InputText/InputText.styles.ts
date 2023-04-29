@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   IInputTextStylesType,
   ILabelInputTextStyleTyle
-} from './InputTextComponent.types';
+} from './InputText.types';
 
 export const Container = styled.div<IInputTextStylesType>`
   width: 100%;

@@ -17,11 +17,6 @@ export interface IGetCompanyDetails {
   company: ICompany;
 }
 
-export interface IGetCompanyDetailsTeste {
-  user: IUser;
-  company: ICompany;
-}
-
 export interface IPersistenceGetCompanyDetails {
   user: IPersistenceUser[];
   company: IPersistenceCompany;

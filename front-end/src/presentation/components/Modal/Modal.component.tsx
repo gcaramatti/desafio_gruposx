@@ -1,12 +1,7 @@
 import ReactModal from 'react-modal';
-import { IModalProps } from './ModalComponent.types';
+import { IModalProps } from './Modal.types';
 import { Button } from '..';
-import {
-  Container,
-  FooterButtons,
-  FormContainer,
-  Title
-} from './ModalComponent.styles';
+import { Container, FooterButtons, FormContainer, Title } from './Modal.styles';
 
 export function Modal({
   isOpen,

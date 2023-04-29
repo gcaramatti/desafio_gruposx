@@ -1,5 +1,5 @@
 import { InputText, Loader, Modal, Select } from '../../../components';
-import { IModalCreateUserCompany } from './ModalCreateUserCompanyComponent.types';
+import { IModalCreateUserCompany } from './ModalCreateUserCompany.types';
 import { useModalCreateUserCompany } from './useModalCreateUserCompany';
 
 export function ModalCreateUserCompany({

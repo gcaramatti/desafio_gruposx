@@ -1,6 +1,6 @@
-import { Container } from './LoaderComponent.styles';
-import { StyledSpinner } from './LoaderComponent.styles';
-import { ILoaderProps } from './LoaderComponent.types';
+import { Container } from './Loader.styles';
+import { StyledSpinner } from './Loader.styles';
+import { ILoaderProps } from './Loader.types';
 
 export function Loader({
   isLoading = false

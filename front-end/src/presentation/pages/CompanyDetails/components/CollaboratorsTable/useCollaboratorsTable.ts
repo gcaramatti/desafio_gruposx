@@ -2,7 +2,7 @@ import { useMutation } from 'react-query';
 import { deleteUserMutation } from '../../../../../data/queries/user/user.mutations';
 import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
-import { IUseCollaboratorsParamsType } from './CollaboratorsTableComponent.types';
+import { IUseCollaboratorsParamsType } from './CollaboratorsTable.types';
 
 export function useCollaboratorsTable({
   refetch
