@@ -94,10 +94,16 @@ class UserController extends Controller
         ];
 
         if(!is_null($request)) {
-            Company::create($noCompanyData);
+            if(!Company::latest()->first()->id > 0 || is_null(Company::latest()->first()->id)) {
+                Company::create($noCompanyData);
+            }
 
             $request['password'] = bcrypt($request['password']);
-            $request['company_id'] = Company::latest()->first()->id;
+
+            $request['company_id'] = $request['company_id'];
+            if($request['company_id'] === 1) {
+                $request['company_id'] = Company::latest()->first()->id;
+            }
 
             User::create($request->all());
 
