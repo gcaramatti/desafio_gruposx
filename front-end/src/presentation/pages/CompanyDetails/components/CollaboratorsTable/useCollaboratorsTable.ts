@@ -3,14 +3,18 @@ import { deleteUserMutation } from '../../../../../data/queries/user/user.mutati
 import { toast } from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert';
 import { IUseCollaboratorsParamsType } from './CollaboratorsTable.types';
+import { useAuth } from '../../../../../data/store/slices/useAuth';
 
 export function useCollaboratorsTable({
   refetch
 }: IUseCollaboratorsParamsType) {
+  const { user, logout } = useAuth();
   const deleteUserUseMutation = useMutation(
     deleteUserMutation.key,
     async (id: number) => {
-      return await deleteUserMutation.mutation(id);
+      return await deleteUserMutation.mutation(id).then(() => {
+        if (user.id === id) logout();
+      });
     },
     {
       onSuccess: () => {

@@ -16,10 +16,12 @@ import { CreateUserFormSchema } from './components/CreateUserForm/CreateUserForm
 import { createUserMutation } from '../../../data/queries/user/user.mutations';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { useAuth } from '../../../data/store/slices/useAuth';
 
 export function useHomePage() {
   const [modalOpen, setModalOpen] = useState<HomePageModalType>('closed');
   const queryClient = useQueryClient();
+  const { user } = useAuth();
 
   const {
     handleSubmit: createCompanyFormHandleSubmit,
@@ -46,7 +48,7 @@ export function useHomePage() {
   });
 
   const selectCompanyOptions: { value: string; label: string }[] = [];
-
+  const { logout } = useAuth();
   const {
     data: allCompanies,
     refetch,
@@ -54,6 +56,7 @@ export function useHomePage() {
   } = useQuery(getAllCompaniesQuery.key, getAllCompaniesQuery.query, {
     onSuccess: data => {
       queryClient.setQueryData(getAllCompaniesQuery.key, data);
+      localStorage.removeItem('selectCompanyOptions');
 
       data.map(value => {
         selectCompanyOptions.push({
@@ -69,6 +72,7 @@ export function useHomePage() {
         );
     },
     onError: () => {
+      logout();
       toast.error('Erro desconhecido');
     }
   });
@@ -109,7 +113,9 @@ export function useHomePage() {
   const deleteCompanyUseMutation = useMutation(
     deleteCompanyMutation.key,
     async (companyId: number) => {
-      return await deleteCompanyMutation.mutation(companyId);
+      return await deleteCompanyMutation.mutation(companyId).then(() => {
+        if (user.companyId === companyId) logout();
+      });
     },
     {
       onSuccess: () => {
