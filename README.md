@@ -16,4 +16,5 @@ Já o segundo terminal deve estar dentro da pasta back-end, deve-se rodar compos
 Crie um banco de dados vazio e insira as informações de acesso no arquivo .env<br/>
 Rode o seguinte comando no terminal: php artisan migrate<br/>
 E em seguida: php artisan serve<br/>
-*OBS*: Caso seu computador não reconheça o comando composer, faça o download pelo passo a passo a seguir: https://getcomposer.org/download/
+*OBS*: Caso seu computador não reconheça o comando composer, faça o download pelo passo a passo a seguir: https://getcomposer.org/download/<br/>
+E caso você não tenha o php instalado, você pode instalar o xampp pelo seguinte link: https://www.apachefriends.org/pt_br/download.html (sugestão mais fácil para testes)
